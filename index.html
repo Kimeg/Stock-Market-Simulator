@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>스캘핑 연습 HTS</title>
+<link rel="stylesheet" href="css/styles.css"></head>
+<body>
+<div class="bar">
+<select id="stk"></select>
+<button id="play">▶ Play</button><button id="stop">■ Stop</button><button id="res">⏯ Resume</button><button id="rst">↺ Reset</button>
+<label>배속 <select id="spd"><option value="1">1x 실시간</option><option value="2">2x</option><option value="5" selected>5x</option><option value="10">10x</option></select></label>
+<label>시계색 <input id="clkColor" type="color" value="#f5b942" title="장중 시계 색상"></label><label>실시간색 <input id="rclkColor" type="color" value="#7d8699" title="실시간 시계 색상"></label><span id="clk" class="clk-drag" title="마우스로 끌어 이동"></span><span id="rclk" class="clk-drag" title="마우스로 끌어 이동"></span>
+</div>
+<div class="wl" id="wl"></div><div class="hd" id="hd"></div>
+<div class="main">
+<section class="pn chart"><div class="ma" id="ma"></div><div class="ma" id="chartTools"></div><div class="ma" id="indTools"></div><canvas id="cv"></canvas></section>
+<section class="pn" style="overflow:auto"><div class="ttl">호가주문 · 좌측 파란칸=지정가 매도 / 우측 분홍칸=지정가 매수 (점선=미체결, 실선=체결)</div><div id="bk"></div></section>
+<section class="pn acc">
+<div><div class="ttl" style="margin:-8px -8px 6px">계좌 현황</div><div class="kv" id="ac"></div></div>
+<div>
+<div id="pz"></div>
+<div id="est" style="color:var(--mu);margin-top:6px"></div>
+<div class="row"><button class="buy" onclick="order('buy')">시장가 매수</button><button class="sell" onclick="order('sell')">시장가 매도</button></div>
+<div class="row"><button onclick="flat()">전량 청산</button><button onclick="S.ord=[];render()">미체결 취소</button></div>
+
+<div id="po" style="margin-top:6px;color:var(--mu)"></div>
+</div>
+<div id="log"></div>
+</section>
+</div>
+<div id="toast" style="position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--pn);border:1px solid var(--ac);padding:8px 14px;border-radius:6px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9"></div>
+<script src="js/app.js" defer></script></body>
+</html>
